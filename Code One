@@ -1,0 +1,291 @@
+quotes = [
+    `"Insert Quote here :)"`,
+]
+
+selQuote = quotes[Math.round(Math.random()*(quotes.length - 1))]
+corrr = `<h2>Morrison</h2><font id="wittyquote" size="4" color="white"><em>` + selQuote + `</em></font>`
+$("#theme_picker")[0].style.display = "none"
+$("#bottomBar")[0].style.display = "none"
+
+styling = document.createElement("style");
+document.head.appendChild(styling);
+
+
+
+styling = document.createElement("style");
+document.head.appendChild(styling);
+
+styling.innerHTML = `
+#candidate_form h3 {
+    visibility: hidden;
+}
+
+#candidate_form h3::before {
+  content: "Please select your party:";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  visibility: visible;
+}
+
+#candidate_id, #running_mate_id, .person_description_window, .person_button {
+    z-index: 289;
+    position:relative;
+}
+
+#running_mate_form h3 {
+    visibility: hidden;
+}
+
+#running_mate_form h3::before {
+  content: "Please select your party leader:";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  visibility: visible;
+}
+
+#candidate_summary ul li:nth-child(2),
+#candidate_summary ul li:nth-child(3), #running_mate_summary ul li:nth-child(2) {
+    display: none;
+}
+`
+
+let z = new MutationObserver((mutationsList, observer) => {
+    let runningMateSummary = document.querySelector("#running_mate_summary");
+    if (runningMateSummary && runningMateSummary.children[0].children[2].innerHTML != runningMateSummary.children[0].children[2].innerHTML.replaceAll("Home State", "Division")) {
+        runningMateSummary.children[0].children[2].innerHTML = runningMateSummary.children[0].children[2].innerHTML.replaceAll("Home State", "Division");
+    }
+});
+
+
+e = campaignTrail_temp
+
+campaignTrail_temp.election_json = [
+  {
+    "model": "campaign_trail.election",
+    "pk": 20,
+    "fields": {
+      "year": 2001,
+      "summary": "<p>Destined to have losed the 2019 Election, Morrison turned the tables, having won third term for the Liberal Party of Australia. With a majority Government and Labor in scrambles, the Government could get it's agenda through with ease, right? Not at all, with controversy to follow, and a nation growing uneasy with a leader who is a muppet, Morrison will need to guide the nation through if he is to survive.<p></p>No one knows how his next term will go as Prime Minister. The man never amazes to shock the Australian public. But a task is at hand, to keep Australia at bay. To show it is a nation capable of unity and strenght. Who knows what suprises this Government will give to Australia...",
+	  "image_url": "https://static.ffx.io/images/$zoom_0.1576%2C$multiply_0.7554%2C$ratio_1.777778%2C$width_1059%2C$x_0%2C$y_84/t_crop_custom/q_86%2Cf_auto/2a5c05e4d113f312b5aa6258394c058f774a73e7",
+      "winning_electoral_vote_number": 76,
+      "advisor_url": "",
+      "recommended_reading": "",
+      "has_visits": 1,
+      "no_electoral_majority_image": "https://www.oxfam.org.au/wp-content/uploads/2022/04/HouseOfRepsBannerfeature.jpeg"
+    }
+  }
+]
+campaignTrail_temp.candidate_json = [
+  {
+    "model": "campaign_trail.candidate",
+    "pk": 200,
+    "fields": {
+      "first_name": "Liberal/National Coalition - ",
+      "last_name": "L／NP", // special character ／ because you can't have a / in a filename
+      "election": 20,
+      "party": "Liberal",
+      "state": "Canberra",
+      "priority": 1,
+      "description": "<p><p/>",
+      "color_hex": "#0055A5", // party logo colour
+      "secondary_color_hex": "#0055A5",
+//      "color_hex": "#000065", //matching the banner
+//      "secondary_color_hex": "#000065",
+      "is_active": 1,
+      "image_url": "https://i.imgur.com/gq90EO2.png",
+      "electoral_victory_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+      "electoral_loss_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+      "no_electoral_majority_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+      "description_as_running_mate": "'",
+      "candidate_score": 1
+    }
+  },
+
+  {
+    "model": "campaign_trail.candidate",
+    "pk": 201,
+    "fields": {
+      "first_name": "Australian Labor Party - ",
+      "last_name": "ALP",
+      "election": 20,
+      "party": "Labor",
+      "state": "Canberra",
+      "priority": 2,
+      "description": "<p><p/>",
+      "color_hex": "#E34F49", // party logo colour
+      "secondary_color_hex": "#E34F49",
+//      "color_hex": "#7F0000", //matching the banner
+//      "secondary_color_hex": "#7F0000",
+      "is_active": 0,
+      "image_url": "https://i.imgur.com/tyrkrWp.png",
+      "electoral_victory_message": "<h3>Congratulations! You've won the 2001 Federal Election!</h3><p>Christ above! You managed to win against the apparent terror that was John Howard and the Coalition forces. Everyone underestimated you, but you proved them wrong.</p><p> Prime Minister John Howard calls to concede and wishes you well in your first term. Speaking of first term, there is alot on your plate to deal with. You'll have to help the United States and the UK in their efforts to deal with the War on Terror, deal with issues at home as well such as taxes and the high gas prices. If all goes well, 2004 with be a breaze. Speaking of 2004, you'll probably have to deal with Peter Costello as Opposition Leader. </p><p> Good Luck, Prime Minister Beazley, you're gonna need it. </p> ",
+      "electoral_loss_message": "<h3>Sorry! You've lost the 2001 Federal Election!</h3><p>Wow. This is a huge blow to Labor and you now.  Core supporters are very upset that Labor hasn't managed to snatch the victory from the Coalition. With winning in the debates to early leads in the polls, pundits thought you would win, even the worm on Channel 9 went with you, but unfortunatly, the charm couldn't be transferred to the polls for the election.</p><p>You call Prime Minister Howard and congratulate him in his win, for a second time. You think back on what you have done wrong and what you could have done better. Unfortunately, Labor will be moving on to a new leader to lead the party in 2004. Simon Crean, the member for Hotham and your Parties Deputy Leader, is eyeing the Labor Party leadership.<p/><p>As of now, you still have your seat of Brand in Western Australia. You'll still be apart of the Opposition, but maybe a position in the shadow cabinet isn't out of the question, or a 3rd time being leader of the Labor Party...</p>",
+      "no_electoral_majority_message": "<h3>The Endings Have Broken!</h3><p>Contact the mod author to have this fixed.</p>",
+      "description_as_running_mate": "'",
+      "candidate_score": 1
+    }
+  },
+
+ {
+    "model": "campaign_trail.candidate",
+    "pk": 202,
+    "fields": {
+      "first_name": "Australian Greens - ",
+      "last_name": "GRN",
+      "election": 20,
+      "party": "Greens",
+      "state": "Canberra",
+      "priority": 3,
+      "description": "'",
+      "color_hex": "#19C91E",
+      "secondary_color_hex": "#19C91E",
+      "is_active": 0,
+      "image_url": "'",
+      "electoral_victory_message": "'",
+      "electoral_loss_message": "'",
+      "no_electoral_majority_message": "'",
+      "description_as_running_mate": "'",
+      "candidate_score": 1
+    }
+  },
+
+{
+    "model": "campaign_trail.candidate",
+    "pk": 203,
+    "fields": {
+      "first_name": "Independents - ",
+      "last_name": "IND",
+      "election": 20,
+      "party": "Non-Alligned",
+      "state": "Canberra",
+      "priority": 4,
+      "description": "'",
+      "color_hex": "#8E8B8B",
+      "secondary_color_hex": "#8E8B8B",
+      "is_active": 0,
+      "image_url": "'",
+      "electoral_victory_message": "'",
+      "electoral_loss_message": "'",
+      "no_electoral_majority_message": "'",
+      "description_as_running_mate": "'",
+      "candidate_score": 1
+    }
+  },
+  
+  {
+    "model": "campaign_trail.candidate",
+    "pk": 204,
+    "fields": {
+      "first_name":"Scott",
+      "last_name": "Morrison",
+      "election": 20,
+      "party": "Liberal",
+      "state": "Cook, New South Wales",
+      "priority": 5,
+      "description": "'",
+      "color_hex": "#FF0000",
+      "secondary_color_hex": "#FFA0A0",
+      "is_active": 0,
+      "image_url": "https://michaelwest.com.au/wp-content/uploads/2020/06/Scott-Morrison.jpg", 
+      "electoral_victory_message": "'",
+      "electoral_loss_message": "'",
+      "no_electoral_majority_message": "'",
+      "description_as_running_mate": "<p><p/>",
+      "candidate_score": 0
+    }
+  },
+
+]
+
+    
+
+
+campaignTrail_temp.running_mate_json = [
+  {
+    "model": "campaign_trail.running_mate",
+    "pk": 9980,
+    "fields": {
+      "candidate": 201,
+      "running_mate": 209
+    }
+  },
+  {
+      "model": "campaign_trail.running_mate",
+      "pk": 9980,
+      "fields": {
+        "candidate": 200,
+        "running_mate": 204
+      }
+    }
+]
+campaignTrail_temp.opponents_default_json = [
+  {
+    "election": 20,
+    "candidates": [
+      200,
+      201,
+      202,
+      203
+    ]
+  }
+]
+campaignTrail_temp.opponents_weighted_json = [
+  {
+    "election": 20,
+    "candidates": [
+      200,
+      201,
+      202,
+      203
+    ]
+  }
+] 
+campaignTrail_temp.global_parameter_json = [
+  {
+    "model": "campaign_trail.global_parameter",
+    "pk": 1,
+    "fields": {
+      "vote_variable": 1.125,
+      "max_swing": 0.12,
+      "start_point": 0.94,
+      "candidate_issue_weight": 10,
+      "running_mate_issue_weight": 3,
+      "issue_stance_1_max": -0.71,
+      "issue_stance_2_max": -0.3,
+      "issue_stance_3_max": -0.125,
+      "issue_stance_4_max": 0.125,
+      "issue_stance_5_max": 0.3,
+      "issue_stance_6_max": 0.71,
+      "global_variance": 0.01,
+      "state_variance": 0.005,
+      "question_count": 25,
+      "default_map_color_hex": "#C9C9C9",
+      "no_state_map_color_hex": "#999999"
+    }
+  }
+]
+//campaignTrail_temp.candidate_dropout_json = JSON.parse("[{\"model\": \"campaign_trail.candidate_dropout\", \"pk\": 1, \"fields\": {\"candidate\": 36, \"affected_candidate\": 18, \"probability\": 1.0}}]"); // this is probably unnneeded
+campaignTrail_temp.temp_election_list = [
+  {
+    "id": 20,
+    "year": 2016,
+    "is_premium": 0,
+    "display_year": "2022 Australia - Morrison"
+  }
+]
+campaignTrail_temp.credits = 'SergeantAnderson'
+
+document.getElementById("header").src = "https://i.imgur.com/2qExwq2.png"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#000d78"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#00427c"
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+$(".container")[0].style.backgroundColor = "#00084b"
+document.body.background = "https://i.guim.co.uk/img/media/9899e022104fbebe475c4f9c4d00c55bec48f01e/294_306_3748_2250/master/3748.jpg?width=1200&quality=85&auto=format&fit=max&s=dbda515d13337e979e657fd7c1a7eed2" 
+
+
